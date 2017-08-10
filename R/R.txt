@@ -1,0 +1,293 @@
+Variable Assignment:
+----------------------
+
+# Assignment using equal operator.
+var.1 = c(0,1,2,3)           
+
+# Assignment using leftward operator.
+var.2 <- c("learn","R")   
+
+# Assignment using rightward operator.   
+c(TRUE,1) -> var.3     
+
+The values of the variables can be printed using print() or cat()function. The cat() function combines multiple items into a continuous print output
+
+print(var.1)
+cat ("var.1 is ", var.1 ,"\n")
+cat ("var.2 is ", var.2 ,"\n")
+cat ("var.3 is ", var.3 ,"\n")
+
+
+Data Type of a Variable:
+--------------------------
+
+
+In R, a variable itself is not declared of any data type, rather it gets the data type of the R - object assigned to it. 
+So R is called a dynamically typed language, which means that we can change a variable’s data type of the 
+same variable again and again when using it in a program.
+
+
+var_x <- "Hello"
+cat("The class of var_x is ",class(var_x),"\n")
+
+var_x <- 34.5
+cat("  Now the class of var_x is ",class(var_x),"\n")
+
+var_x <- 27L
+cat("   Next the class of var_x becomes ",class(var_x),"\n")
+
+ls():
+================
+
+To know all the variables currently available in the workspace we use the ls() function.
+
+
+# List the variables starting with the pattern "var".
+print(ls(pattern = "var")) 
+
+The variables starting with dot(.) are hidden, they can be listed using "all.names = TRUE" argument to ls() function.
+
+print(ls(all.name = TRUE))
+
+
+Deleting Variables:
+=======================
+Variables can be deleted by using the rm() function. Below we delete the variable var.3. On printing the value of the variable error is thrown.
+
+rm(var.3)
+print(var.3)
+
+Types of Operators:
+=============================
+
+We have the following types of operators in R programming -
+
+Arithmetic Operators
+Relational Operators
+Logical Operators
+Assignment Operators
+Miscellaneous Operators
+
+
+example of Miscellaneous Operators:
+=======================================
+
+v <- 2:8
+print(v) 
+it produces the following result -
+
+[1] 2 3 4 5 6 7 8
+
+v1 <- 8
+v2 <- 12
+t <- 1:10
+print(v1 %in% t) 
+print(v2 %in% t) 
+it produces the following result -
+
+[1] TRUE
+[1] FALSE
+
+operator is used to multiply a matrix with its transpose.
+
+M = matrix( c(2,6,5,1,10,4), nrow = 2,ncol = 3,byrow = TRUE)
+t = M %*% t(M)
+print(t)
+it produces the following result -
+
+      [,1] [,2]
+[1,]   65   82
+[2,]   82  117
+
+
+switch case:
+-----------------
+
+x <- switch(
+   3,
+   "first",
+   "second",
+   "third",
+   "fourth"
+)
+print(x)
+
+
+Loop:
+====================
+
+repeat:
+
+v <- c("Hello","loop")
+cnt <- 2
+
+repeat {
+   print(v)
+   cnt <- cnt+1
+   
+   if(cnt > 5) {
+      break
+   }
+}
+
+while:
+
+v <- c("Hello","while loop")
+cnt <- 2
+
+while (cnt < 7) {
+   print(v)
+   cnt = cnt + 1
+}
+
+for:
+
+v <- LETTERS[1:4]
+for ( i in v) {
+   print(i)
+}
+
+Function Definition:
+================================
+
+An R function is created by using the keyword function. The basic syntax of an R function definition is as follows -
+
+function_name <- function(arg_1, arg_2, ...) {
+   Function body 
+}
+
+Built-in Function:
+--------------------
+Simple examples of in-built functions are seq(), mean(), max(), sum(x) and paste(...) etc. They are directly called by user written programs. You can refer most widely used R functions.
+
+# Create a sequence of numbers from 32 to 44.
+print(seq(32,44))
+
+
+User-defined Function:
+-------------------------------
+
+
+# Create a function to print squares of numbers in sequence.
+new.function <- function(a) {
+   for(i in 1:a) {
+      b <- i^2
+      print(b)
+   }
+}
+
+# Call the function new.function supplying 6 as an argument.
+new.function(6)
+
+
+Calling a Function with Argument Values (by position and by name):
+---------------------------------------------------------------------
+The arguments to a function call can be supplied in the same sequence as defined in the function or they can be supplied in a different sequence but assigned to the names of the arguments.
+
+# Create a function with arguments.
+new.function <- function(a,b,c) {
+   result <- a * b + c
+   print(result)
+}
+
+# Call the function by position of arguments.
+new.function(5,3,11)
+
+# Call the function by names of the arguments.
+new.function(a = 11, b = 5, c = 3)
+
+Calling a Function with Default Argument:
+--------------------------------------------
+
+# Create a function with arguments.
+new.function <- function(a = 3, b = 6) {
+   result <- a * b
+   print(result)
+}
+
+# Call the function without giving any argument.
+new.function()
+
+# Call the function with giving new values of the argument.
+new.function(9,5)
+
+Lazy Evaluation of Function:
+----------------------------------
+Arguments to functions are evaluated lazily, which means so they are evaluated only when needed by the function body.
+
+# Create a function with arguments.
+new.function <- function(a, b) {
+   print(a^2)
+   print(a)
+   print(b)
+}
+
+# Evaluate the function without supplying one of the arguments.
+new.function(6)
+When we execute the above code, it produces the following result -
+
+[1] 36
+[1] 6
+Error in print(b) : argument "b" is missing, with no default
+
+Strings:
+=======================
+
+
+Concatenating Strings - paste() function:
+--------------------------------------------
+
+
+a <- "Hello"
+b <- 'How'
+c <- "are you? "
+
+print(paste(a,b,c))
+
+print(paste(a,b,c, sep = "-"))
+
+print(paste(a,b,c, sep = "", collapse = ""))
+
+collapse is used to eliminate the space in between two strings. But not the space within two words of one string.
+
+Formatting numbers & strings - format() function:
+-------------------------------------------------------
+
+
+format(x, digits, nsmall, scientific, width, justify = c("left", "right", "centre", "none")) 
+Following is the description of the parameters used -
+
+x is the vector input.
+
+digits is the total number of digits displayed.
+
+nsmall is the minimum number of digits to the right of the decimal point.
+
+scientific is set to TRUE to display scientific notation.
+
+width indicates the minimum width to be displayed by padding blanks in the beginning.
+
+justify is the display of the string to left, right or center.
+
+
+Vectors:
+=========================
+
+https://www.tutorialspoint.com/r/r_vectors.htm
+
+Lists:
+===================
+
+https://www.tutorialspoint.com/r/r_lists.htm
+
+Matrix:
+===================
+
+
+https://www.tutorialspoint.com/r/r_matrices.htm
+
+
+
+
+
+
